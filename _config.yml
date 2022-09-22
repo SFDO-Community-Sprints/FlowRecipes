@@ -1,12 +1,12 @@
 title: "Flow Recipes"
-description: "Information about Declarative Lookup Rollup Summaries"
+description: "Information about the FlowRecipes repository, part of SFDO Community Sprints"
 remote_theme: just-the-docs/just-the-docs
 color_scheme: "light"
 
 # Aux links for the upper right navigation
 aux_links:
-  "Declarative Lookup Rollup Summaries on GitHub":
-    - "//github.com/SFDO-Community/declarative-lookup-rollup-summaries"
+  "FlowRecipes on GitHub":
+    - "//github.com/SFDO-Community-Sprints/FlowRecipes"
 aux_links_new_tab: true
 
 # Heading anchor links appear on hover over h1-h6 tags in page content
