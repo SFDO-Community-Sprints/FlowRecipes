@@ -28,10 +28,11 @@ Our backlog is [here](https://github.com/orgs/SFDO-Community-Sprints/projects/6/
 
 Full Name            | Team Role     | Github Username                                    | Working Group? 
 ------------         | ------------- | -------------                                      |-------------   
-Enter persons name   | Group Leader  | [fakeusername](https://github.com/fakeusername)    | 
-Enter persons name   | Contributor   |                                                    | Enter working group name
+Stephen Brown   | Contributor  | [stephenbrown1](https://github.com/stephenbrown1)    | 
+Marc Baizman   | Contributor   |                                                    | 
+Rebecca Cole Sullivan | Contributor |  |
 
-## Sprint (DATE)
+## The "Virtual only" sprint (Nov 2-3)
 
 ### Project Team Accomplishments
 Please replace with the tasks you team was able to accomplish during the Sprint event.
@@ -39,15 +40,17 @@ Please replace with the tasks you team was able to accomplish during the Sprint 
 # Past Project Teams
 We recommend creating a Wiki page for past Sprint Event volunteers (per Sprint), and that Sprints goals, accomplishments, etc. Here's a good example: https://github.com/SFDO-Community-Sprints/DataGenerationToolkit. If you prefer to add this information to the readme file, here's a good example of formatting you can use: https://github.com/SFDO-Community-Sprints/Admin-Skills-and-Nonprofit-Salesforce-Teams
 
-## Sprint (DATE):
+## The "DF" Sprint (Sept 22, San Francisco)
 
 ### Project Team Accomplishments
 Please replace with the tasks you team was able to accomplish during the Sprint event.
 
 Full Name            | Team Role     | Github Username                                    | Working Group? 
 ------------         | ------------- | -------------                                      |-------------   
-Enter persons name   | Group Leader  | [fakeusername](https://github.com/fakeusername)    | 
-Enter persons name   | Contributor   |                                                    | Enter working group name
+Stephen Brown   | Contributor  | [stephenbrown1](https://github.com/stephenbrown1)    | 
+Marc Baizman   | Contributor   |                                                    | 
+Rebecca Cole Sullivan | Contributor |  |
+Bobby Smith | Contributor |  | 
 
 ## Sprint (DATE):
 
