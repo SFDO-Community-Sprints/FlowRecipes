@@ -1,4 +1,4 @@
-title: "Flow Recipes"
+title: "Flow Recipes [WIP]"
 description: "Information about the FlowRecipes repository, part of SFDO Community Sprints"
 remote_theme: just-the-docs/just-the-docs
 color_scheme: "light"
@@ -15,7 +15,7 @@ aux_links_new_tab: true
 heading_anchors: true
 
 #Footer
-footer_content: "Declarative Lookup Roll-Up Summaries is a tool built and maintained by a community of volunteers through the Open Source Commons program. This is not a Salesforce-owned product. If you need support, go to the Trailblazer Community Group. "
+footer_content: "Flow Recipes is a repository built and maintained by a community of volunteers through the Open Source Commons program. This is not a Salesforce-owned product. If you need support, raise an issue in the github repo :) "
 
 # Search Settings
 search_enabled: true
