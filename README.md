@@ -2,22 +2,27 @@
 Sprint project for flow templates
 
 
-This is a sample README.md file you can use to update your project. New project repos will use this template when they are created.
 
 # Project Name
-Please replace with your projects name
+Flow Recipes
 
 # Project Overview
 ## Vision & Goals
-Please replace with your projects vision.
-* Goal 1
-* Goal 2
+* Provide a one stop shop for beginner admins/part time admins, getting up to speed on Flow and creating their first flow with the basic building blocks that they can then customize for their business processes.
+* Other guidance around what to do/not to do when you're creating your Flows.
+* Link to other trusted advice from content creators once you start to get into more advanced Flows and Flow design patterns.
 
 ## Project Vertical
-Please replace with Nonprofit, Education, or Other (if Other, explain further)
+Not specific to a particular vertical.
 
 ## Hub Group Link
-Please replace with the URL for your Power of Us Hub and/or Trailblazer Community group.
+At this stage we are using [https://github.com/SFDO-Community-Sprints/FlowRecipes](https://github.com/SFDO-Community-Sprints/FlowRecipes) as a central repo of all our info.
+
+If you have an idea then either fork and contribute, or create an issue [here](https://github.com/SFDO-Community-Sprints/FlowRecipes/issues).
+
+The guide is based on our documentation [here](https://sfdo-community-sprints.github.io/FlowRecipes)
+
+Our backlog is [here](https://github.com/orgs/SFDO-Community-Sprints/projects/6/views/1)
 
 # Current Project Team & Accomplishments
 
