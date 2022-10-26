@@ -1,5 +1,5 @@
 # FlowRecipes
-Sprint project for flow templates
+focused on creating recipes to help beginner admins get up to speed on Flow by creating basic building blocks that Admins can then customize for their own Nonprofit or Education processes.
 
 
 
