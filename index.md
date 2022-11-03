@@ -29,7 +29,7 @@ Primarily this set of documentation, which contains
 
 # What's next?
 
-We have a [backlog](#) in our girhub repo of what we'd like to keep working on for FlowRecipes. If you want to help, great! Just fork/clone the repo and go from there.
+We have a [backlog](#) in our github repo of what we'd like to keep working on for FlowRecipes. If you want to help, great! Just fork/clone the repo and go from there.
 - More recipes!
 - A way of automating the install of Flows into your dev/sandbox org
 
