@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Set the Campaign Skew. When a Campaign has more Opportunities assigned than the Skew number a new Campaign will be created, and new Opportunities will be assigned to the new Campaign.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Campaign Skew</label>
+    <visibility>Public</visibility>
+</CustomObject>

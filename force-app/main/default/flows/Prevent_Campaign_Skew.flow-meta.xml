@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <description>If the Skew threshold has been crossed reassign the CampaignId.</description>
+        <name>Validate_Threshold</name>
+        <label>Validate Threshold</label>
+        <locationX>353</locationX>
+        <locationY>343</locationY>
+        <defaultConnectorLabel>return</defaultConnectorLabel>
+        <rules>
+            <name>Reassign_Campaign</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Campaign.NumberOfOpportunities</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>SkewThreshold</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>getCampaign</targetReference>
+            </connector>
+            <label>Reassign Campaign</label>
+        </rules>
+    </decisions>
+    <description>This flow reassigns the related CampaignId if the related Campaign has too many related Opportunities which could cause Data Skew.
+
+-https://developer.salesforce.com/blogs/engineering/2013/04/managing-lookup-skew-to-avoid-record-lock-exceptions
+-https://trailhead.salesforce.com/content/learn/modules/large-data-volumes</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CampaignId</name>
+        <dataType>String</dataType>
+        <expression>BlankValue({!getCampaign.Id},{!$Record.CampaignId})</expression>
+    </formulas>
+    <interviewLabel>Prevent Campaign Skew {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Prevent Campaign Skew</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Retrieve the next Campaign, which we will reassign Opportunities too.</description>
+        <name>getCampaign</name>
+        <label>getCampaign</label>
+        <locationX>598</locationX>
+        <locationY>338</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Campaign.ParentId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>NumberOfOpportunities</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>SkewThreshold</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Campaign</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the Opportunity, changing the CampaignId when applicable.</description>
+        <name>Update_Opportunity</name>
+        <label>Update Opportunity</label>
+        <locationX>787</locationX>
+        <locationY>338</locationY>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>CampaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>235</locationX>
+        <locationY>45</locationY>
+        <connector>
+            <targetReference>Validate_Threshold</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CampaignId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>SkewThreshold</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <elementReference>$Setup.Campaign_Skew__c.Skew_Threshold__c</elementReference>
+        </value>
+    </variables>
+</Flow>
