@@ -10,4 +10,5 @@ parent: Recipes
 
 # Campaign Member overview
 
+![](https://lucid.app/publicSegments/view/ecb08905-6ac7-495e-9255-f0ceb9274999/image.png)
 
