@@ -25,11 +25,11 @@ We want to provide that initial info in a concise format, and then point them to
 Primarily this set of documentation, which contains
 - Some basic getting started information; 
 - Links to modules in Trailhead for getting up to speed on Flow; 
-- Some (Recipes)[/Recipes] for basic building blocks, as admins look to move/migrate over from Workflow Rules and/or Process Builder to Flow
+- Some [Recipes](/Recipes) for basic building blocks, as admins look to move/migrate over from Workflow Rules and/or Process Builder to Flow
 
 # What's next?
 
-We have a (backlog)[#] in our girhub repo of what we'd like to keep working on for FlowRecipes. If you want to help, great! Just fork/clone the repo and go from there.
+We have a [backlog](#) in our girhub repo of what we'd like to keep working on for FlowRecipes. If you want to help, great! Just fork/clone the repo and go from there.
 - More recipes!
 - A way of automating the install of Flows into your dev/sandbox org
 
