@@ -16,3 +16,8 @@ Beginner admins/part time admins, getting up to speed on Flow and creating their
 
 # Why?
 
+
+
+# History of FlowRecipes
+
+[Sprint history is contained within the project repo wiki](https://github.com/SFDO-Community-Sprints/FlowRecipes/wiki)
