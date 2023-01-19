@@ -4,61 +4,12 @@
     <decisions>
         <name>Is_Existing</name>
         <label>Is Existing</label>
-        <locationX>480</locationX>
-        <locationY>565</locationY>
+        <locationX>482</locationX>
+        <locationY>528</locationY>
+        <defaultConnector>
+            <targetReference>Update_RD_with_To_Be_Acknowledged</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Yes_Existing_Donor</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
-            <conditions>
-                <leftValueReference>FirstGiftDateonContact</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Deceased</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>DoNotContact</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>Yes Existing Donor</label>
-        </rules>
-        <rules>
-            <name>New_Donor</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
-            <conditions>
-                <leftValueReference>FirstGiftDateonContact</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Do_Not_Contact</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Deceased</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>New Donor</label>
-        </rules>
         <rules>
             <name>Do_Not_Contact</name>
             <conditionLogic>or</conditionLogic>
@@ -80,6 +31,101 @@
                 <targetReference>Update_RD_to_Do_not_Acknowledge</targetReference>
             </connector>
             <label>Do Not Contact</label>
+        </rules>
+        <rules>
+            <name>No_Email_Address_Available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ContactEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Deceased</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Do_Not_Contact</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_RD_with_To_Be_Acknowledged</targetReference>
+            </connector>
+            <label>No Email Address Available</label>
+        </rules>
+        <rules>
+            <name>Yes_Existing_Donor</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FirstGiftDateonContact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Deceased</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DoNotContact</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ContactEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes Existing Donor</label>
+        </rules>
+        <rules>
+            <name>New_Donor</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FirstGiftDateonContact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Do_Not_Contact</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Deceased</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ContactEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>New Donor</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -109,11 +155,52 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Activity_Record</name>
+        <label>Create Activity Record</label>
+        <locationX>903</locationX>
+        <locationY>502</locationY>
+        <connector>
+            <targetReference>Update_RD_with_Acknowledgement_Status_and_Date</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>TodaysDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CallType</field>
+            <value>
+                <stringValue>Outbound</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>ContactID</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Contact_on_RD</name>
         <label>Get Contact on RD</label>
-        <locationX>489</locationX>
-        <locationY>372</locationY>
+        <locationX>490</locationX>
+        <locationY>370</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Is_Existing</targetReference>
@@ -151,8 +238,8 @@
     <recordUpdates>
         <name>Update_RD_to_Do_not_Acknowledge</name>
         <label>Update RD to Do not Acknowledge</label>
-        <locationX>272</locationX>
-        <locationY>618</locationY>
+        <locationX>251</locationX>
+        <locationY>526</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -172,8 +259,8 @@
     <recordUpdates>
         <name>Update_RD_with_Acknowledgement_Status_and_Date</name>
         <label>Update RD with Acknowledgement Status and Date</label>
-        <locationX>795</locationX>
-        <locationY>615</locationY>
+        <locationX>1059</locationX>
+        <locationY>526</locationY>
         <inputAssignments>
             <field>Acknowledgment_Date__c</field>
             <value>
@@ -188,21 +275,27 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_RD_with_To_Be_Acknowledged</name>
+        <label>Update RD with To Be Acknowledged</label>
+        <locationX>491</locationX>
+        <locationY>746</locationY>
+        <inputAssignments>
+            <field>Acknowledgment_Status__c</field>
+            <value>
+                <stringValue>To Be Acknowledged</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>373</locationX>
-        <locationY>48</locationY>
+        <locationX>364</locationX>
+        <locationY>45</locationY>
         <connector>
             <targetReference>Get_Contact_on_RD</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>
-        <filters>
-            <field>npe03__Next_Payment_Date__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
         <filters>
             <field>Acknowledgment_Date__c</field>
             <operator>IsNull</operator>
@@ -212,9 +305,16 @@
         </filters>
         <filters>
             <field>Acknowledgment_Status__c</field>
-            <operator>EqualTo</operator>
+            <operator>NotEqualTo</operator>
             <value>
-                <stringValue>To Be Acknowledged</stringValue>
+                <stringValue>Do Not Acknowledge</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>npe03__Contact__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <object>npe03__Recurring_Donation__c</object>
